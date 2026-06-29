@@ -31,6 +31,75 @@
   window.BASE_PATH = base;
   console.log('[PATCH] Dynamic BASE_PATH set to:', window.BASE_PATH);
 
+  // =========================================================
+  // 0.1 GLOBAL NETWORK URL NORMALIZATION (Fix double slashes)
+  // =========================================================
+  function normalizeUrl(url) {
+    if (typeof url !== 'string') return url;
+    // Normalize double slashes in path (preserving protocol)
+    var parts = url.split('://');
+    if (parts.length === 2) {
+      return parts[0] + '://' + parts[1].replace(/\/+/g, '/');
+    }
+    // For relative/absolute paths
+    return url.replace(/\/+/g, '/');
+  }
+
+  // Hook Fetch
+  var originalFetch = window.fetch;
+  window.fetch = function(input, init) {
+    if (typeof input === 'string') {
+      input = normalizeUrl(input);
+    } else if (input && typeof input.url === 'string') {
+      try {
+        var newUrl = normalizeUrl(input.url);
+        input = new Request(newUrl, input);
+      } catch (e) {}
+    }
+    return originalFetch.call(this, input, init);
+  };
+
+  // Hook XMLHttpRequest
+  var originalOpen = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+    if (typeof url === 'string') {
+      url = normalizeUrl(url);
+    }
+    return originalOpen.call(this, method, url, async, user, password);
+  };
+
+  // Hook HTMLImageElement src
+  var originalSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
+  if (originalSrcDescriptor && originalSrcDescriptor.set) {
+    Object.defineProperty(HTMLImageElement.prototype, 'src', {
+      get: function() {
+        return originalSrcDescriptor.get.call(this);
+      },
+      set: function(val) {
+        if (typeof val === 'string') {
+          val = normalizeUrl(val);
+        }
+        originalSrcDescriptor.set.call(this, val);
+      }
+    });
+  }
+
+  // Hook HTMLMediaElement src (audio/video)
+  var originalVideoSrcDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'src');
+  if (originalVideoSrcDescriptor && originalVideoSrcDescriptor.set) {
+    Object.defineProperty(HTMLMediaElement.prototype, 'src', {
+      get: function() {
+        return originalVideoSrcDescriptor.get.call(this);
+      },
+      set: function(val) {
+        if (typeof val === 'string') {
+          val = normalizeUrl(val);
+        }
+        originalVideoSrcDescriptor.set.call(this, val);
+      }
+    });
+  }
+
   const PATCH_TAG = '[PATCH]';
   const FORCE_READY_TIMEOUT = 8000; // ms - force page ready after this
   const SCROLL_RESET_DELAY = 500;   // ms - delay before scrolling to top
