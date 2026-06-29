@@ -9,6 +9,28 @@
 (function() {
   'use strict';
 
+  // =========================================================
+  // 0. DYNAMIC BASE PATH DETECTION (for GitHub Pages support)
+  // =========================================================
+  var pathname = window.location.pathname;
+  var base = "/";
+  if (pathname.includes("/projects/")) {
+    base = pathname.substring(0, pathname.indexOf("/projects/") + 1);
+  } else if (pathname.includes("/about.html")) {
+    base = pathname.substring(0, pathname.indexOf("/about.html") + 1);
+  } else if (pathname.includes("/projects.html")) {
+    base = pathname.substring(0, pathname.indexOf("/projects.html") + 1);
+  } else if (pathname.includes("/index.html")) {
+    base = pathname.substring(0, pathname.indexOf("/index.html") + 1);
+  } else {
+    base = pathname;
+  }
+  if (!base.endsWith("/")) {
+    base += "/";
+  }
+  window.BASE_PATH = base;
+  console.log('[PATCH] Dynamic BASE_PATH set to:', window.BASE_PATH);
+
   const PATCH_TAG = '[PATCH]';
   const FORCE_READY_TIMEOUT = 8000; // ms - force page ready after this
   const SCROLL_RESET_DELAY = 500;   // ms - delay before scrolling to top
