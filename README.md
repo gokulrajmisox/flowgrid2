@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d0d0d,40:1a0030,80:3b0080,100:7c3aed&height=220&section=header&text=Lusion.co%20Enhanced%20Clone&fontSize=46&fontColor=c084fc&animation=fadeIn&fontAlignY=38&desc=✦%20Award-Winning%20WebGL%20Studio%20Experience%20%7C%20Three.js%20%2B%20Custom%20Enhancements&descAlignY=60&descColor=aaaaaa&descSize=14" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d0d0d,40:1a0030,80:3b0080,100:7c3aed&height=220&section=header&text=Lusion%20Clone&fontSize=46&fontColor=c084fc&animation=fadeIn&fontAlignY=38&desc=✦%20Award-Winning%20WebGL%20Studio%20Experience%20%7C%20Three.js%20%2B%20Custom%20Enhancements&descAlignY=60&descColor=aaaaaa&descSize=14" width="100%"/>
 
 </div>
 
@@ -24,15 +24,15 @@
 <div align="center">
 
 [![Author](https://img.shields.io/badge/Author-Tcode--Motion-7c3aed?style=for-the-badge&logo=github)](https://github.com/Tcode-Motion)
-[![License](https://img.shields.io/badge/License-Educational-blue?style=for-the-badge)](https://github.com/Tcode-Motion/Lusion.co-Enhanced-Clone)
+[![License](https://img.shields.io/badge/License-Educational-blue?style=for-the-badge)](https://github.com/Tcode-Motion/lusion-clone)
 [![Original](https://img.shields.io/badge/🌐_Original-lusion.co-7c3aed?style=for-the-badge)](https://lusion.co)
-[![Star](https://img.shields.io/github/stars/Tcode-Motion/Lusion.co-Enhanced-Clone?style=for-the-badge&color=yellow)](https://github.com/Tcode-Motion/Lusion.co-Enhanced-Clone/stargazers)
+[![Star](https://img.shields.io/github/stars/Tcode-Motion/lusion-clone?style=for-the-badge&color=yellow)](https://github.com/Tcode-Motion/lusion-clone/stargazers)
 
 </div>
 
 <div align="center">
 
-[🌐 Original Site](https://lusion.co) • [✨ Features](#-features) • [🚀 Setup](#-getting-started) • [☁️ Deploy](#-deployment) • [📁 Structure](#-project-structure)
+[🌐 Original Site](https://lusion.co) • [✨ Features](#-features) • [🚀 Run Locally](#-run-locally) • [☁️ Deploy](#-deployment) • [🤝 Contribute](#-contributing) • [📁 Structure](#-project-structure)
 
 </div>
 
@@ -57,16 +57,16 @@
 
 <table>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/Tcode-Motion/Lusion.co-Enhanced-Clone/main/assets/projects/devin_ai/home.webp" alt="Home — Devin AI Project" width="400"/></td>
-    <td><img src="https://raw.githubusercontent.com/Tcode-Motion/Lusion.co-Enhanced-Clone/main/assets/projects/porsche_dream_machine/home.webp" alt="Porsche Dream Machine" width="400"/></td>
+    <td><img src="https://raw.githubusercontent.com/Tcode-Motion/lusion-clone/main/assets/projects/devin_ai/home.webp" alt="Home — Devin AI Project" width="400"/></td>
+    <td><img src="https://raw.githubusercontent.com/Tcode-Motion/lusion-clone/main/assets/projects/porsche_dream_machine/home.webp" alt="Porsche Dream Machine" width="400"/></td>
   </tr>
   <tr>
     <td align="center"><em>✦ Featured Project — Devin AI</em></td>
     <td align="center"><em>✦ Featured Project — Porsche Dream Machine</em></td>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/Tcode-Motion/Lusion.co-Enhanced-Clone/main/assets/projects/synthetic_human/home.webp" alt="Synthetic Human" width="400"/></td>
-    <td><img src="https://raw.githubusercontent.com/Tcode-Motion/Lusion.co-Enhanced-Clone/main/assets/projects/spaace/home.webp" alt="Spaace NFT" width="400"/></td>
+    <td><img src="https://raw.githubusercontent.com/Tcode-Motion/lusion-clone/main/assets/projects/synthetic_human/home.webp" alt="Synthetic Human" width="400"/></td>
+    <td><img src="https://raw.githubusercontent.com/Tcode-Motion/lusion-clone/main/assets/projects/spaace/home.webp" alt="Spaace NFT" width="400"/></td>
   </tr>
   <tr>
     <td align="center"><em>✦ Synthetic Human — 3D Experience</em></td>
@@ -161,18 +161,18 @@
 > [!IMPORTANT]
 > The site **must** be served via HTTP — opening `index.html` directly as a `file://` will **not work** because it uses ES modules and `fetch()` requests.
 
-### 📥 Download
+### 📥 Download / Clone
 
 **Option 1 — Git Clone (recommended)**
 ```bash
-git clone https://github.com/Tcode-Motion/Lusion.co-Enhanced-Clone.git
-cd Lusion.co-Enhanced-Clone
+git clone https://github.com/Tcode-Motion/lusion-clone.git
+cd lusion-clone
 ```
 
 **Option 2 — GitHub CLI**
 ```bash
-gh repo clone Tcode-Motion/Lusion.co-Enhanced-Clone
-cd Lusion.co-Enhanced-Clone
+gh repo clone Tcode-Motion/lusion-clone
+cd lusion-clone
 ```
 
 **Option 3 — Download ZIP**
@@ -182,32 +182,114 @@ cd Lusion.co-Enhanced-Clone
 
 ---
 
-### ▶️ Run Locally
+## 💻 Run Locally
 
-Pick **any one** method:
+> [!IMPORTANT]
+> You **cannot** just double-click `index.html`. The site uses ES modules and `fetch()` calls that require a proper HTTP server — pick any one method below.
 
-| Method | Command |
-|:---:|:---|
-| 🐍 **Python** | `python -m http.server 8000` |
-| 📦 **Node.js** | `npx serve .` |
-| 🐘 **PHP** | `php -S localhost:8000` |
-| 🪟 **Windows Batch** | Double-click `start_server.cmd` (included in repo) |
+### Method 1 — 🐍 Python (Zero install, works on all OS)
 
-Then open **[http://localhost:8000](http://localhost:8000)** in your browser. 🎉
+```bash
+# Navigate into the project folder first
+cd lusion-clone
 
-### 🪟 Windows Quick Start
+# Python 3 (most common)
+python -m http.server 8000
+
+# Python 2 (legacy)
+python -m SimpleHTTPServer 8000
+```
+
+Then open **http://localhost:8000** in your browser. 🎉
+
+---
+
+### Method 2 — 📦 Node.js (`npx serve`)
+
+```bash
+cd lusion-clone
+npx serve .
+```
+
+> No global install needed — `npx` downloads `serve` on demand.
+> Default port is **3000** → open **http://localhost:3000**
+
+---
+
+### Method 3 — 📦 Node.js (`live-server` with auto-reload)
+
+```bash
+npm install -g live-server
+cd lusion-clone
+live-server
+```
+
+The browser opens automatically and refreshes on every file save. Great for development!
+
+---
+
+### Method 4 — 🐘 PHP
+
+```bash
+cd lusion-clone
+php -S localhost:8000
+```
+
+Open **http://localhost:8000**
+
+---
+
+### Method 5 — 🪟 Windows One-Click (Batch Script)
+
+A `start_server.cmd` file is included in the repo root. Just **double-click** it — it starts a Python server and opens your browser automatically.
+
+```bat
+:: What start_server.cmd does internally:
+cd /d "%~dp0"
+start http://localhost:8000
+py -m http.server 8000
+```
+
+---
+
+### Method 6 — 🆚 VS Code Live Server Extension
+
+1. Install the **[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)** extension in VS Code
+2. Open the `lusion-clone` folder in VS Code
+3. Right-click `index.html` → **"Open with Live Server"**
+4. The site opens at **http://127.0.0.1:5500**
+
+---
+
+### 🪟 Windows Quick Start (PowerShell)
+
 ```powershell
-cd "C:\path\to\Lusion.co-Enhanced-Clone"
+cd "C:\path\to\lusion-clone"
 py -m http.server 8000
 # Open http://localhost:8000 in Chrome
 ```
 
 ### 🐧 Linux / 🍎 macOS Quick Start
+
 ```bash
-cd ~/Lusion.co-Enhanced-Clone
+cd ~/lusion-clone
 python3 -m http.server 8000
 # Open http://localhost:8000
 ```
+
+---
+
+### ✅ Verifying It Works
+
+Once the server is running, visit **http://localhost:8000** — you should see:
+
+1. **A full-screen preloader** counting from 0 → 100%
+2. **A smooth reveal** into the 3D WebGL homepage
+3. **An interactive cursor** (custom dot + ring) following your mouse
+4. **Purple accents** on scroll bar, buttons, and hover states
+
+> [!TIP]
+> If the page is blank or shows errors: make sure you started the server **from inside** the `lusion-clone` folder, not from a parent directory.
 
 ---
 
@@ -237,7 +319,7 @@ Or: [app.netlify.com](https://app.netlify.com) → Add new site → Import from 
 2. **Settings → Pages → Source:** Deploy from a branch
 3. Branch: `main` / Root: `/ (root)` → Save
 
-Live at: `https://tcode-motion.github.io/Lusion.co-Enhanced-Clone/`
+Live at: `https://tcode-motion.github.io/lusion-clone/`
 
 ### Cloudflare Pages
 
@@ -250,7 +332,7 @@ Live at: `https://tcode-motion.github.io/Lusion.co-Enhanced-Clone/`
 ## 📁 Project Structure
 
 ```
-Lusion.co-Enhanced-Clone/
+lusion-clone/
 │
 ├── index.html                  # 🏠 Home page
 ├── about.html                  # 👥 About page
@@ -310,6 +392,114 @@ Lusion.co-Enhanced-Clone/
 
 ---
 
+## 🤝 Contributing
+
+Contributions are welcome! Whether it's a bug fix, a new feature, or a docs improvement — every PR is appreciated. 🙌
+
+### 🔁 How to Contribute
+
+**Step 1 — Fork the repository**
+
+Click the **Fork** button at the top-right of this page to create your own copy.
+
+**Step 2 — Clone your fork locally**
+```bash
+git clone https://github.com/<your-username>/lusion-clone.git
+cd lusion-clone
+```
+
+**Step 3 — Create a new branch**
+
+Always work on a new branch — never commit directly to `main`.
+```bash
+git checkout -b feature/your-feature-name
+# Examples:
+# git checkout -b fix/mobile-cursor-bug
+# git checkout -b feature/dark-mode-toggle
+# git checkout -b docs/improve-readme
+```
+
+**Step 4 — Make your changes**
+
+The key files to edit:
+
+| File | What to edit |
+|:---|:---|
+| `custom.css` | Visual styles, colors, animations |
+| `custom.js` | Cursor logic, scroll behavior, JS enhancements |
+| `patch.js` | Routing, loading, and compatibility fixes |
+| `index.html` / `about.html` / `projects.html` | Page structure & markup |
+| `projects/*.html` | Individual project pages |
+
+**Step 5 — Test your changes locally**
+```bash
+python -m http.server 8000
+# Open http://localhost:8000 and verify everything works
+```
+
+**Step 6 — Commit your changes**
+```bash
+git add .
+git commit -m "feat: add dark mode toggle to header"
+# Commit message prefixes:
+# feat:     new feature
+# fix:      bug fix
+# docs:     documentation change
+# style:    formatting / visual-only change
+# refactor: code improvement with no behavior change
+```
+
+**Step 7 — Push and open a Pull Request**
+```bash
+git push origin feature/your-feature-name
+```
+
+Then go to your fork on GitHub and click **"Compare & pull request"**.
+
+---
+
+### 📋 Contribution Guidelines
+
+- 🧹 **Keep it clean** — follow the existing code style (2-space indentation, clear variable names)
+- 📝 **Describe your PR** — explain what you changed and why
+- 🧪 **Test before submitting** — verify on at least Chrome and Firefox
+- 🚫 **Don't break existing features** — preloader, WebGL scene, cursor, and routing must still work
+- 💬 **Open an issue first** for large changes — let's discuss before you invest time
+
+### 💡 Ideas for Contributions
+
+- 🐛 Bug fixes (mobile layout issues, audio edge cases, etc.)
+- 📱 Improved mobile / touch support
+- ♿ Accessibility improvements (keyboard nav, ARIA labels)
+- 🌍 More project detail pages
+- 🎨 Alternative color themes (e.g. neon green, cyber red)
+- 📄 Better documentation or code comments
+- ⚡ Performance optimizations
+
+---
+
+## ❓ FAQ
+
+**Q: The page is blank when I open `index.html` directly.**
+A: You must serve the project through an HTTP server. See [Run Locally](#-run-locally) above.
+
+**Q: The 3D scene doesn't load / I see WebGL errors.**
+A: Make sure your browser and GPU support WebGL. Visit [webglreport.com](https://webglreport.com) to check. Try Chrome for best compatibility.
+
+**Q: Audio doesn't play.**
+A: Browsers require a user interaction before playing audio. Click the sound toggle button in the top-right corner of the site.
+
+**Q: I get a CORS error in the console.**
+A: This happens when you open the file directly (`file://`). Always use a local HTTP server.
+
+**Q: The preloader gets stuck.**
+A: `patch.js` includes an 8-second timeout that forces the site to reveal itself. If it's consistently stuck, check the browser console for asset loading errors.
+
+**Q: Can I use this for my own portfolio?**
+A: Yes! This is open for educational use. Please keep the disclaimer and credit the original [Lusion studio](https://lusion.co).
+
+---
+
 ## 👨‍💻 Author
 
 <div align="center">
@@ -330,6 +520,7 @@ Lusion.co-Enhanced-Clone/
 | | |
 |:---|:---|
 | 🌐 **Original Website** | [lusion.co](https://lusion.co) |
+| 📦 **This Repo** | [github.com/Tcode-Motion/lusion-clone](https://github.com/Tcode-Motion/lusion-clone) |
 | 👤 **Author** | [Tcode-Motion](https://github.com/Tcode-Motion) |
 | 🏢 **Lusion Studio** | [lusion.co](https://lusion.co) — Bristol, UK |
 | 📺 **YouTube** | [youtube.com/@sachkaswitch](https://youtube.com/@sachkaswitch) |
