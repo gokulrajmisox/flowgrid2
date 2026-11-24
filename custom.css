@@ -134,3 +134,351 @@
 #preloader-percent-digits {
   color: var(--accent-light) !important;
 }
+
+/* ---- 11. Editorial Team Showcase (#about-who-subsection-team only) ---- */
+#about-who-subsection-team #about-who-team-letter-container {
+  display: none !important;
+}
+
+#about-who-subsection-team #about-who-team-dots {
+  opacity: 0.28;
+}
+
+#about-who-subsection-team #about-who-team-left {
+  pointer-events: none;
+  z-index: 4;
+}
+
+#about-who-subsection-team #about-who-team-info {
+  width: 14em;
+  height: 5.4em;
+}
+
+#about-who-subsection-team #about-who-team-name {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+#about-who-subsection-team #about-who-team-job {
+  opacity: 0.92 !important;
+  color: var(--color-off-white);
+  font-family: IBMPlexMono, monospace;
+  font-size: 0.72em;
+  letter-spacing: 0.14em;
+}
+
+#about-who-subsection-team #about-who-team-faces {
+  left: 4%;
+  bottom: 0;
+  width: 62%;
+  height: 90%;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+#about-who-team-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+}
+
+#about-who-team-editorial-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 12%;
+  pointer-events: none;
+  user-select: none;
+}
+
+#about-who-team-editorial-name {
+  font-family: Aeonik, sans-serif;
+  font-weight: 500;
+  font-size: clamp(3.6rem, 9.8vw, 9.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: pre-line;
+  color: var(--color-off-white);
+  opacity: 0.94;
+  text-shadow: 0 20px 64px rgba(0, 0, 0, 0.52);
+  will-change: transform, opacity;
+}
+
+#about-who-team-stage[data-scale="stacked"] #about-who-team-editorial-name {
+  font-size: clamp(3.2rem, 8.2vw, 7.8rem);
+  line-height: 0.86;
+}
+
+#about-who-team-stage[data-scale="long"] #about-who-team-editorial-name {
+  font-size: clamp(2.5rem, 6.2vw, 6.2rem);
+  letter-spacing: -0.04em;
+}
+
+#about-who-team-stage[data-scale="medium"] #about-who-team-editorial-name {
+  font-size: clamp(3.2rem, 8.2vw, 7.8rem);
+}
+
+#about-who-team-portrait-wrap {
+  position: relative;
+  z-index: 2;
+  height: 86%;
+  max-height: 86%;
+  width: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+}
+
+#about-who-team-portrait {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 84%, transparent 100%);
+  filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.62));
+}
+
+#about-who-team-editorial-role-wrap {
+  position: absolute;
+  z-index: 3;
+  bottom: 2.1rem;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65em;
+  padding: 0.55em 1.25em;
+  border-radius: 999px;
+  background: rgba(11, 13, 22, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-family: IBMPlexMono, monospace;
+  font-size: 0.75em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-off-white);
+  white-space: nowrap;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+#about-who-team-editorial-role-index,
+#about-who-team-editorial-role-sep {
+  opacity: 0.55;
+}
+
+/* Animation classes — only applied by JS on member switch.
+   Without .--is-entering the elements use their default visible state. */
+#about-who-team-stage.--is-entering #about-who-team-editorial-name {
+  animation: fgTeamNameIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#about-who-team-stage.--is-entering #about-who-team-portrait-wrap {
+  animation: fgTeamPortraitIn 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+#about-who-team-stage.--is-entering #about-who-team-editorial-role-wrap {
+  animation: fgTeamRoleIn 0.45s 0.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Ensure portrait is visible even before JS fires _changeFaceUIByIndex */
+#about-who-team-portrait {
+  min-height: 200px;
+}
+
+/* Force #about-who-team-faces ABOVE canvas z-index stack */
+#about-who-subsection-team #about-who-team-faces {
+  z-index: 10 !important;
+}
+
+@keyframes fgTeamNameIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 0.94;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fgTeamPortraitIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes fgTeamRoleIn {
+  from {
+    opacity: 0;
+    transform: translate3d(-50%, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+#about-who-subsection-team #about-who-team-right {
+  z-index: 5;
+}
+
+#about-who-team-right-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4em;
+}
+
+#about-who-team-roster {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55em;
+  width: 100%;
+  pointer-events: auto;
+}
+
+.about-who-team-roster-item {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65em;
+  width: 100%;
+  padding: 0.7em 0.85em;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-off-white);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease, opacity 0.25s ease;
+  opacity: 0.68;
+}
+
+.about-who-team-roster-item:hover {
+  opacity: 0.95;
+  border-color: rgba(255, 255, 255, 0.36);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.about-who-team-roster-item.--is-active {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.62);
+  background: rgba(26, 47, 251, 0.18);
+}
+
+.about-who-team-roster-idx {
+  font-family: IBMPlexMono, monospace;
+  font-size: 0.625em;
+  line-height: 1.5;
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+.about-who-team-roster-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  min-width: 0;
+}
+
+.about-who-team-roster-name {
+  font-family: Aeonik, sans-serif;
+  font-weight: 500;
+  font-size: 0.75em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.about-who-team-roster-role {
+  font-family: IBMPlexMono, monospace;
+  font-size: 0.5625em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  opacity: 0.72;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 812px) {
+  #about-who-subsection-team #about-who-team-faces {
+    bottom: 18%;
+    left: 0;
+    width: 100%;
+    height: 64%;
+  }
+
+  #about-who-team-editorial-bg {
+    padding-bottom: 16%;
+  }
+
+  #about-who-team-editorial-name {
+    font-size: clamp(3.2rem, 17vw, 6rem);
+  }
+
+  #about-who-team-stage[data-scale="stacked"] #about-who-team-editorial-name {
+    font-size: clamp(2.6rem, 13.5vw, 5rem);
+  }
+
+  #about-who-team-stage[data-scale="long"] #about-who-team-editorial-name {
+    font-size: clamp(2.1rem, 10.2vw, 4.2rem);
+  }
+
+  #about-who-team-stage[data-scale="medium"] #about-who-team-editorial-name {
+    font-size: clamp(2.6rem, 13vw, 5rem);
+  }
+
+  #about-who-team-portrait-wrap {
+    height: 82%;
+    max-height: 82%;
+  }
+
+  #about-who-team-editorial-role-wrap {
+    bottom: 0.85rem;
+    font-size: 0.65em;
+    padding: 0.45em 1em;
+  }
+
+  #about-who-team-right-footer {
+    gap: 0.85em;
+  }
+
+  #about-who-team-roster {
+    gap: 0.4em;
+  }
+
+  .about-who-team-roster-item {
+    padding: 0.5em 0.65em;
+    gap: 0.45em;
+  }
+}

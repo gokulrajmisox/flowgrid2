@@ -1,37 +1,34 @@
 [
-	{
-		"id": "edan",
-		"name": "Edan Kwan",
-		"role": "Cofounder &<br> Creative Director"
-	},
-	{
-		"id": "ffi",
-		"name": "Ffion Morgan",
-		"role": "Cofounder &<br> Head of Operation"
-	},
-	{
-		"id": "marcolp",
-		"name": "Marco Ludovico Perego",
-		"role": "Creative Developer"
-	},
-	{
-		"id": "paul",
-		"name": "Paul Catoera",
-		"role": "3D Motion Designer"
-	},
-	{
-		"id": "andrii",
-		"name": "Andrii Ovsiannikov",
-		"role": "Art Director"
-	},
-	{
-		"id": "luana",
-		"name": "Luana Doeur",
-		"role": "Designer"
-	},
-	{
-		"id": "sunny",
-		"name": "Sunny",
-		"role": "Executive Purr-ducer"
-	}
+  {
+    "id": "barath",
+    "name": "BARATH",
+    "displayName": "BARATH",
+    "role": "PARTNER",
+    "photo": "assets/team/portraits/barath.png",
+    "scale": "short"
+  },
+  {
+    "id": "barathkavin",
+    "name": "BARATH KAVIN",
+    "displayName": "BARATH\nKAVIN",
+    "role": "PARTNER",
+    "photo": "assets/team/portraits/barathkavin.png",
+    "scale": "stacked"
+  },
+  {
+    "id": "balakumaran",
+    "name": "BALAKUMARAN",
+    "displayName": "BALAKUMARAN",
+    "role": "CEO",
+    "photo": "assets/team/portraits/balakumaran.png",
+    "scale": "long"
+  },
+  {
+    "id": "gokulraj",
+    "name": "GOKULRAJ",
+    "displayName": "GOKULRAJ",
+    "role": "FRONTEND DESIGNER",
+    "photo": "assets/team/portraits/gokulraj.png",
+    "scale": "medium"
+  }
 ]

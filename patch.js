@@ -303,7 +303,7 @@
     var talkBtns = document.querySelectorAll('#header-right-talk-btn, #header-menu-talk');
     talkBtns.forEach(function(btn) {
       btn.addEventListener('click', function() {
-        window.location.href = 'mailto:hello@lusion.co';
+        window.location.href = 'mailto:balaoldmaster@gmail.com';
       });
     });
 
