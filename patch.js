@@ -1,5 +1,5 @@
 /**
- * Lusion Clone - Patch Script
+ * flowgrid Clone - Patch Script
  * 
  * Fixes issues caused by placeholder assets (empty .buf models, 1px textures)
  * that break the Three.js loading chain in the cloned site.

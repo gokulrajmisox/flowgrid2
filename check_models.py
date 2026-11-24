@@ -21,7 +21,7 @@ files = [
     "tunnel_block_wall.buf",
 ]
 
-base_url = "https://techscript.is-a.dev/lusion-clone/assets/models/tunnels/"
+base_url = "https://techscript.is-a.dev/flowgrid-clone/assets/models/tunnels/"
 print("Checking model files on the server...")
 missing = 0
 for file in files:

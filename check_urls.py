@@ -2,8 +2,8 @@ import urllib.request
 import urllib.error
 
 urls = [
-    "https://techscript.is-a.dev/lusion-clone/assets/textures/reel/desktop.mp4",
-    "https://techscript.is-a.dev/lusion-clone/assets/textures/reel/mobile.mp4",
+    "https://techscript.is-a.dev/flowgrid-clone/assets/textures/reel/desktop.mp4",
+    "https://techscript.is-a.dev/flowgrid-clone/assets/textures/reel/mobile.mp4",
 ]
 
 print("Checking reel videos on the server...")

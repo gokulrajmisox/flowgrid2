@@ -37,7 +37,7 @@ models = [
     "terrain_lines.buf"
 ]
 
-base_url = "https://techscript.is-a.dev/lusion-clone/assets/"
+base_url = "https://techscript.is-a.dev/flowgrid-clone/assets/"
 print("Checking about textures on the server...")
 missing = 0
 for t in textures:

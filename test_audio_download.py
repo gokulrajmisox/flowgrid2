@@ -2,9 +2,9 @@ import urllib.request
 import time
 
 urls = [
-    "https://techscript.is-a.dev/lusion-clone/assets/audios/generic.ogg",
-    "https://techscript.is-a.dev/lusion-clone/assets/audios/generic_end.ogg",
-    "https://techscript.is-a.dev/lusion-clone/assets/audios/cinematic_3.ogg",
+    "https://techscript.is-a.dev/flowgrid-clone/assets/audios/generic.ogg",
+    "https://techscript.is-a.dev/flowgrid-clone/assets/audios/generic_end.ogg",
+    "https://techscript.is-a.dev/flowgrid-clone/assets/audios/cinematic_3.ogg",
 ]
 
 print("Testing audio download speed and status...")
