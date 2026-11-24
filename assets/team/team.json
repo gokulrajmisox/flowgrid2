@@ -1,34 +1,56 @@
 [
   {
+    "id": "gokulraj",
+    "name": "Gokulraj K G",
+    "displayName": "GOKULRAJ\nK G",
+    "role": "Frontend Designer",
+    "photo": "assets/team/portraits/gokulraj.png?v=3",
+    "scale": "stacked",
+    "responsibilities": [
+      "Creative UI/UX Design",
+      "Frontend Development",
+      "Interactive Web Experiences",
+      "Motion Design and Animation"
+    ]
+  },
+  {
     "id": "barath",
-    "name": "BARATH",
+    "name": "Barath",
     "displayName": "BARATH",
-    "role": "PARTNER",
-    "photo": "assets/team/portraits/barath.png",
-    "scale": "short"
+    "role": "Partner",
+    "photo": "assets/team/portraits/barath.png?v=3",
+    "scale": "short",
+    "responsibilities": [
+      "Creative Collaboration",
+      "Project Strategy",
+      "Business Development"
+    ]
   },
   {
     "id": "barathkavin",
-    "name": "BARATH KAVIN",
+    "name": "Barath Kavin",
     "displayName": "BARATH\nKAVIN",
-    "role": "PARTNER",
-    "photo": "assets/team/portraits/barathkavin.png",
-    "scale": "stacked"
+    "role": "Partner",
+    "photo": "assets/team/portraits/barathkavin.png?v=3",
+    "scale": "stacked",
+    "responsibilities": [
+      "Creative Collaboration",
+      "Project Coordination",
+      "Strategic Development"
+    ]
   },
   {
     "id": "balakumaran",
-    "name": "BALAKUMARAN",
+    "name": "Balakumaran",
     "displayName": "BALAKUMARAN",
     "role": "CEO",
-    "photo": "assets/team/portraits/balakumaran.png",
-    "scale": "long"
-  },
-  {
-    "id": "gokulraj",
-    "name": "GOKULRAJ",
-    "displayName": "GOKULRAJ",
-    "role": "FRONTEND DESIGNER",
-    "photo": "assets/team/portraits/gokulraj.png",
-    "scale": "medium"
+    "photo": "assets/team/portraits/balakumaran.png?v=3",
+    "scale": "long",
+    "responsibilities": [
+      "Company Leadership",
+      "Business Strategy",
+      "Vision and Direction",
+      "Client Relations"
+    ]
   }
 ]

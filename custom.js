@@ -52,27 +52,10 @@
       });
     }
 
-    // --- Scroll-Triggered Fade-In for Sections ---
-    var sections = document.querySelectorAll('.section');
-    if (sections.length && 'IntersectionObserver' in window) {
-      sections.forEach(function(s) {
-        s.style.opacity = '0';
-        s.style.transform = 'translateY(30px)';
-        s.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
-      });
-
-      var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-
-      sections.forEach(function(s) { obs.observe(s); });
-    }
+    // Note: Section visibility and scroll transitions are managed directly by
+    // the virtual scroll engine in hoisted.js; hiding tall sections (e.g.
+    // #about-who at 14,580px) behind a viewport IntersectionObserver threshold
+    // prevents them from ever becoming visible.
 
     // --- Dynamic Year in Footer ---
     var copyright = document.getElementById('footer-bottom-copyright');

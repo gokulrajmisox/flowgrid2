@@ -22,6 +22,8 @@
     base = pathname.substring(0, pathname.indexOf("/projects.html") + 1);
   } else if (pathname.includes("/index.html")) {
     base = pathname.substring(0, pathname.indexOf("/index.html") + 1);
+  } else if (/\/(about|projects)\/?$/.test(pathname)) {
+    base = pathname.replace(/\/(about|projects)\/?$/, "/");
   } else {
     base = pathname;
   }
@@ -101,7 +103,7 @@
   }
 
   const PATCH_TAG = '[PATCH]';
-  const FORCE_READY_TIMEOUT = 8000; // ms - force page ready after this
+  const FORCE_READY_TIMEOUT = 15000; // ms - emergency fallback only if engine stalls
   const SCROLL_RESET_DELAY = 500;   // ms - delay before scrolling to top
 
   // =========================================================
@@ -157,22 +159,39 @@
   // =========================================================
   function forceReady() {
     const preloader = document.getElementById('preloader');
-    if (preloader && preloader.style.display !== 'none') {
+    const transitionOverlay = document.getElementById('transition-overlay');
+    const isPreloaderVisible = preloader && preloader.style.display !== 'none';
+    const isOverlayBlocking = transitionOverlay && transitionOverlay.style.display !== 'none';
+
+    if (isPreloaderVisible || isOverlayBlocking) {
+      window.__FORCE_READY__ = true;
       console.log(PATCH_TAG, 'Forcing preloader completion (' + suppressedErrors + ' errors suppressed)');
-      
-      // Animate the preloader away
-      preloader.style.transition = 'opacity 0.8s ease-out';
-      preloader.style.opacity = '0';
-      
+
+      if (preloader && isPreloaderVisible) {
+        preloader.style.transition = 'opacity 0.5s ease-out';
+        preloader.style.opacity = '0';
+      }
+      if (transitionOverlay && isOverlayBlocking) {
+        transitionOverlay.style.transition = 'opacity 0.5s ease-out';
+        transitionOverlay.style.opacity = '0';
+        transitionOverlay.style.pointerEvents = 'none';
+      }
+
       setTimeout(function() {
-        preloader.style.display = 'none';
-        
+        if (preloader) {
+          preloader.style.display = 'none';
+        }
+        if (transitionOverlay) {
+          transitionOverlay.style.display = 'none';
+          transitionOverlay.style.pointerEvents = 'none';
+        }
+
         // Make the page interactive
         var inputBlocker = document.getElementById('input-blocker');
         if (inputBlocker) {
           inputBlocker.style.display = 'none';
         }
-        
+
         // Ensure UI is visible
         var ui = document.getElementById('ui');
         if (ui) {
@@ -188,7 +207,7 @@
         }
 
         console.log(PATCH_TAG, 'Page forced ready.');
-      }, 900);
+      }, 600);
     }
   }
 
@@ -309,47 +328,6 @@
 
     console.log(PATCH_TAG, 'Enhanced Menu & Navigation Patch active.');
   });
-
-  // =========================================================
-  // 5. PRELOADER CSS FIX
-  //    Ensure preloader is visible and styled correctly
-  // =========================================================
-  var style = document.createElement('style');
-  style.textContent = [
-    '#preloader {',
-    '  position: fixed;',
-    '  top: 0; left: 0; right: 0; bottom: 0;',
-    '  display: flex;',
-    '  align-items: center;',
-    '  justify-content: center;',
-    '  background: #000;',
-    '  color: #fff;',
-    '  z-index: 10000;',
-    '  font-family: "Aeonik-Medium", "Aeonik-Regular", sans-serif;',
-    '}',
-    '#preloader-percent-digits {',
-    '  display: flex;',
-    '  font-size: clamp(48px, 10vw, 120px);',
-    '  font-weight: 500;',
-    '  letter-spacing: -0.02em;',
-    '  overflow: hidden;',
-    '}',
-    '.preloader-percent-digit {',
-    '  display: flex;',
-    '  flex-direction: column;',
-    '  height: 1em;',
-    '  overflow: hidden;',
-    '  line-height: 1;',
-    '}',
-    '.preloader-percent-digit-num {',
-    '  height: 1em;',
-    '  display: flex;',
-    '  align-items: center;',
-    '  justify-content: center;',
-    '  flex-shrink: 0;',
-    '}',
-  ].join('\n');
-  document.head.appendChild(style);
 
   console.log(PATCH_TAG, 'Initialized. Timeout:', FORCE_READY_TIMEOUT + 'ms');
 })();
