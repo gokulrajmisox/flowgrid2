@@ -1,56 +1,58 @@
 [
   {
-    "id": "gokulraj",
-    "name": "Gokulraj K G",
-    "displayName": "GOKULRAJ\nK G",
-    "role": "Frontend Designer",
-    "photo": "assets/team/portraits/gokulraj.png?v=3",
-    "scale": "stacked",
-    "responsibilities": [
-      "Creative UI/UX Design",
-      "Frontend Development",
-      "Interactive Web Experiences",
-      "Motion Design and Animation"
-    ]
-  },
-  {
-    "id": "barath",
-    "name": "Barath",
-    "displayName": "BARATH",
-    "role": "Partner",
-    "photo": "assets/team/portraits/barath.png?v=3",
-    "scale": "short",
-    "responsibilities": [
-      "Creative Collaboration",
-      "Project Strategy",
-      "Business Development"
-    ]
-  },
-  {
-    "id": "barathkavin",
-    "name": "Barath Kavin",
-    "displayName": "BARATH\nKAVIN",
-    "role": "Partner",
-    "photo": "assets/team/portraits/barathkavin.png?v=3",
-    "scale": "stacked",
-    "responsibilities": [
-      "Creative Collaboration",
-      "Project Coordination",
-      "Strategic Development"
-    ]
-  },
-  {
     "id": "balakumaran",
     "name": "Balakumaran",
     "displayName": "BALAKUMARAN",
-    "role": "CEO",
-    "photo": "assets/team/portraits/balakumaran.png?v=3",
+    "role": "Founder",
+    "photo": "assets/team/portraits/balakumaran.png?v=4",
     "scale": "long",
     "responsibilities": [
       "Company Leadership",
       "Business Strategy",
       "Vision and Direction",
       "Client Relations"
+    ]
+  },
+  {
+    "id": "nagaraj",
+    "name": "Nagaraj",
+    "displayName": "NAGARAJ",
+    "role": "Co-Founder",
+    "photo": "assets/team/portraits/nagaraj.png?v=4",
+    "scale": "medium",
+    "responsibilities": [
+      "Operations Strategy",
+      "Growth & Scaling",
+      "Partnership Ecosystems",
+      "Client Delivery"
+    ]
+  },
+  {
+    "id": "gokulraj",
+    "name": "Gokulraj",
+    "displayName": "GOKULRAJ",
+    "role": "CTO",
+    "photo": "assets/team/portraits/gokulraj.png?v=4",
+    "scale": "medium",
+    "responsibilities": [
+      "Technical Architecture",
+      "UI/UX & Frontend Craft",
+      "Interactive Web Systems",
+      "AI Voice & Software Engineering"
+    ]
+  },
+  {
+    "id": "kumaran",
+    "name": "Kumaran",
+    "displayName": "KUMARAN",
+    "role": "Manager",
+    "photo": "assets/team/portraits/kumaran.png?v=4",
+    "scale": "medium",
+    "responsibilities": [
+      "Operations Management",
+      "Project Coordination",
+      "Client Communication",
+      "Quality Assurance"
     ]
   }
 ]
