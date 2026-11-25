@@ -54,5 +54,31 @@
       "Client Communication",
       "Quality Assurance"
     ]
+  },
+  {
+    "id": "barath",
+    "name": "Barath",
+    "displayName": "BARATH",
+    "role": "Partner",
+    "photo": "assets/team/portraits/barath.png?v=4",
+    "scale": "short",
+    "responsibilities": [
+      "Creative Collaboration",
+      "Project Strategy",
+      "Business Development"
+    ]
+  },
+  {
+    "id": "barathkavin",
+    "name": "Barath Kavin",
+    "displayName": "BARATH\nKAVIN",
+    "role": "Partner",
+    "photo": "assets/team/portraits/barathkavin.png?v=4",
+    "scale": "stacked",
+    "responsibilities": [
+      "Creative Collaboration",
+      "Project Coordination",
+      "Strategic Development"
+    ]
   }
 ]
