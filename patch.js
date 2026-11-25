@@ -1,8 +1,8 @@
 /**
- * flowgrid Clone - Patch Script
+ * Flowgrid Studio - Patch Script
  * 
- * Fixes issues caused by placeholder assets (empty .buf models, 1px textures)
- * that break the Three.js loading chain in the cloned site.
+ * Runtime guards for asset loading, URL normalization,
+ * and SPA navigation reliability.
  * 
  * Must be loaded BEFORE hoisted.81170750.js
  */
@@ -161,9 +161,10 @@
     const preloader = document.getElementById('preloader');
     const transitionOverlay = document.getElementById('transition-overlay');
     const isPreloaderVisible = preloader && preloader.style.display !== 'none';
-    const isOverlayBlocking = transitionOverlay && transitionOverlay.style.display !== 'none';
+    const appNeverStarted = !document.documentElement.classList.contains('is-ready');
 
-    if (isPreloaderVisible || isOverlayBlocking) {
+    if (isPreloaderVisible || appNeverStarted) {
+      const isOverlayBlocking = transitionOverlay && transitionOverlay.style.display !== 'none';
       window.__FORCE_READY__ = true;
       console.log(PATCH_TAG, 'Forcing preloader completion (' + suppressedErrors + ' errors suppressed)');
 
@@ -250,30 +251,40 @@
     var headerMenu = document.getElementById('header-menu');
     var header = document.getElementById('header');
 
+    function clearMenuInlineStyles() {
+      if (!headerMenu) return;
+      headerMenu.style.display = '';
+      headerMenu.style.opacity = '';
+      headerMenu.style.pointerEvents = '';
+      headerMenu.style.visibility = '';
+      headerMenu.style.zIndex = '';
+    }
+
+    function closeMenuOverlay() {
+      if (headerMenu) headerMenu.classList.remove('--opened');
+      if (menuBtn) menuBtn.classList.remove('--opened');
+      if (header) header.classList.remove('--menu-opened');
+      clearMenuInlineStyles();
+    }
+
     if (menuBtn && headerMenu) {
       menuBtn.addEventListener('click', function(e) {
-        // Stop bubbling so we don't trigger other listeners immediately
+        // When the WebGL/UI app is initialized, let Header._domRightMenuBtnClick handle --opened cleanly
+        if (document.documentElement.classList.contains('is-ready')) {
+          clearMenuInlineStyles();
+          return;
+        }
         e.stopImmediatePropagation();
-        
+
         var isOpen = headerMenu.classList.contains('--opened');
         if (isOpen) {
-          headerMenu.classList.remove('--opened');
-          menuBtn.classList.remove('--opened');
-          if (header) header.classList.remove('--menu-opened');
-          // Fallback cleanup
-          setTimeout(function() {
-            if (!headerMenu.classList.contains('--opened')) {
-              headerMenu.style.display = 'none';
-            }
-          }, 500);
+          closeMenuOverlay();
         } else {
           headerMenu.style.display = 'flex';
-          // Use original classes for styling
           headerMenu.classList.add('--opened');
           menuBtn.classList.add('--opened');
           if (header) header.classList.add('--menu-opened');
-          
-          // Fallback: Ensure visibility if JS initialization failed
+
           headerMenu.style.opacity = '1';
           headerMenu.style.pointerEvents = 'auto';
           headerMenu.style.visibility = 'visible';
@@ -283,28 +294,32 @@
     }
 
     // 4.2 Robust Navigation Fallback
-    // If clicking About/Projects doesn't change the URL in 300ms, force it.
+    // If clicking About/Projects/Home doesn't change the URL in 300ms, force it.
     var menuLinks = document.querySelectorAll('.header-menu-link');
     menuLinks.forEach(function(link) {
       link.style.pointerEvents = 'auto'; // Ensure clickable
-      
+
       link.addEventListener('click', function(e) {
         var href = link.getAttribute('href');
         var scrollTo = link.getAttribute('data-scroll-to');
-        
+
         if (scrollTo === 'contact') {
           e.preventDefault();
-          // Hide menu
-          headerMenu.classList.remove('--opened');
-          menuBtn.classList.remove('--opened');
-          if (header) header.classList.remove('--menu-opened');
-          
+          closeMenuOverlay();
+
           var footer = document.getElementById('footer-section');
           if (footer) footer.scrollIntoView({ behavior: 'smooth' });
           return;
         }
 
         if (href && !href.startsWith('#')) {
+          var targetPath = new URL(href, window.location.href).pathname.replace(/\/index\.html$/i, '/').replace(/\/$/, '') || '/';
+          var currentPath = window.location.pathname.replace(/\/index\.html$/i, '/').replace(/\/$/, '') || '/';
+          closeMenuOverlay();
+          if (targetPath === currentPath) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+          }
           var initialUrl = window.location.href;
           setTimeout(function() {
             // If URL hasn't changed after 300ms, the SPA router likely failed.
