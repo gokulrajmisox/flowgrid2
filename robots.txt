@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://flowgridco.in/sitemap-index.xml
+Sitemap: https://flowgridco.in/sitemap.xml

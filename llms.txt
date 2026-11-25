@@ -1,0 +1,14 @@
+# Flowgrid
+
+Flowgrid is a digital systems and design studio helping growing businesses connect operations, client communication, custom web software, and AI voice workflows.
+
+## Public pages
+- [Home](https://flowgridco.in/): Business systems, AI voice automation, client communication solutions, and custom web software.
+- [About Flowgrid](https://flowgridco.in/about): Team, working process, services, and frequently asked questions.
+- [Capabilities and projects](https://flowgridco.in/projects): Flowgrid service areas and selected project case studies.
+
+## Contact
+- Email: balaoldmaster@gmail.com
+- Direct line: +91 94893 68104
+
+This file is a concise orientation to public website content. It does not guarantee inclusion or ranking in any search or generative system.
