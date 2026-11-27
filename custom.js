@@ -4,6 +4,10 @@
 (function() {
   'use strict';
 
+  import('/assets/js/liquid-logo.mjs').catch(function(err) {
+    console.warn('[LiquidLogo] Module load failed:', err);
+  });
+
   document.addEventListener('DOMContentLoaded', function() {
 
     // --- Custom Cursor ---

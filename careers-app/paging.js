@@ -1,4 +1,5 @@
 import Lenis from 'lenis';
+import { isHeaderOverDarkSection } from './endSectionUtils.js';
 
 function init() {
   const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -32,6 +33,7 @@ function init() {
 
     lenis.on('scroll', () => {
       updateScrollbar();
+      updateBottomSectionsUI();
     });
   }
 
@@ -42,6 +44,33 @@ function init() {
   const scrollbarHandle = document.getElementById('scrollbar-handle');
   const h1Topline = document.getElementById('h1-topline');
   const h1Tagline = document.getElementById('h1-tagline');
+  const header = document.getElementById('header');
+  const endSection = document.getElementById('end-section');
+  const footerSection = document.getElementById('footer-section');
+  const scrollNavSection = document.getElementById('scroll-nav-section');
+  const scrollNavBarInner = document.getElementById('scroll-nav-next-bar-inner');
+  const endBottomBtn = document.getElementById('end-bottom');
+  const footerUpBtn = document.getElementById('footer-bottom-up');
+
+  if (endBottomBtn && footerSection) {
+    endBottomBtn.addEventListener('click', () => {
+      if (lenis) {
+        lenis.scrollTo(footerSection, { duration: 1.1 });
+      } else {
+        footerSection.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      }
+    });
+  }
+
+  if (footerUpBtn) {
+    footerUpBtn.addEventListener('click', () => {
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.25 });
+      } else {
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      }
+    });
+  }
 
   if (h1Topline || h1Tagline) {
     const headlineObserver = new IntersectionObserver(
@@ -63,6 +92,24 @@ function init() {
 
   function onScroll() {
     updateScrollbar();
+    updateBottomSectionsUI();
+  }
+
+  function updateBottomSectionsUI() {
+    if (header) {
+      const darkRects = [];
+      if (endSection) darkRects.push(endSection.getBoundingClientRect());
+      if (scrollNavSection) darkRects.push(scrollNavSection.getBoundingClientRect());
+      const overDark = isHeaderOverDarkSection(darkRects, 44);
+      header.classList.toggle('--on-dark-section', overDark);
+    }
+
+    if (scrollNavSection && scrollNavBarInner) {
+      const rect = scrollNavSection.getBoundingClientRect();
+      const vh = window.innerHeight || 900;
+      const ratio = Math.min(1, Math.max(0.2, (vh - rect.top) / Math.max(1, rect.height + 80)));
+      scrollNavBarInner.style.transform = `scaleX(${ratio.toFixed(3)})`;
+    }
   }
 
   function update(time) {
@@ -70,6 +117,7 @@ function init() {
       lenis.raf(time);
     }
     updateScrollbar();
+    updateBottomSectionsUI();
     if (Array.isArray(window.__flowgridFrameCallbacks)) {
       for (let i = 0; i < window.__flowgridFrameCallbacks.length; i++) {
         window.__flowgridFrameCallbacks[i](time);
