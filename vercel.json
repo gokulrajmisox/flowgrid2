@@ -15,6 +15,10 @@
       "destination": "/projects.html"
     },
     {
+      "source": "/careers",
+      "destination": "/careers.html"
+    },
+    {
       "source": "/projects/:slug",
       "destination": "/projects/:slug.html"
     }

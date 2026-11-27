@@ -7,13 +7,19 @@
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
+    "sync:vendor": "node scripts/sync-vendor.js",
     "generate:seo": "node scripts/generate-seo.js",
-    "build": "npm run generate:seo && node --check server.js && node --check route-resolver.js && node --check scripts/generate-seo.js",
-    "lint": "node --check server.js && node --check route-resolver.js && node --check scripts/generate-seo.js",
-    "test": "node --test route-resolver.test.js"
+    "build": "npm run sync:vendor && npm run generate:seo && node --check server.js && node --check route-resolver.js && node --check scripts/generate-seo.js && node --check scripts/sync-vendor.js",
+    "lint": "node --check server.js && node --check route-resolver.js && node --check scripts/generate-seo.js && node --check scripts/sync-vendor.js && node --check data/careers.js && node --check careers-app/homeScene.js && node --check careers-app/paging.js && node --check careers-app/siteMenu.js && node --check careers-app/projectTiles.js && node --check careers-app/projectTiles/ProjectTile.js && node --check careers-app/roleDetailView.js && node --check careers-app/roleHeroVisual.js && node --check careers-app/antigravity.js && node --check careers-app/neonGlyphs.js && node --check careers-app/neonGlyphsMath.js",
+    "test": "node --test route-resolver.test.js data/careers.test.js careers-app/neonGlyphsMath.test.js careers-app/antigravity.test.js"
   },
   "dependencies": {
+    "@dimforge/rapier3d-compat": "^0.21.0",
     "@vercel/analytics": "^2.0.1",
-    "express": "^4.21.2"
+    "countup.js": "^2.10.1",
+    "express": "^4.21.2",
+    "gsap": "^3.15.1",
+    "lenis": "^1.3.29",
+    "three": "^0.187.0"
   }
 }

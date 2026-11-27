@@ -32,12 +32,15 @@ test('resolves root, clean URLs, trailing slashes, and project pages', () => {
     'index.html',
     'about.html',
     'projects.html',
+    'careers.html',
     'projects/devin_ai.html',
   ]);
 
   assert.equal(resolveHtmlFile(ROOT, '/', exists), path.join(ROOT, 'index.html'));
   assert.equal(resolveHtmlFile(ROOT, '/about', exists), path.join(ROOT, 'about.html'));
   assert.equal(resolveHtmlFile(ROOT, '/about/', exists), path.join(ROOT, 'about.html'));
+  assert.equal(resolveHtmlFile(ROOT, '/careers', exists), path.join(ROOT, 'careers.html'));
+  assert.equal(resolveHtmlFile(ROOT, '/careers/', exists), path.join(ROOT, 'careers.html'));
   assert.equal(resolveHtmlFile(ROOT, '/projects/', exists), path.join(ROOT, 'projects.html'));
   assert.equal(
     resolveHtmlFile(ROOT, '/projects/devin_ai', exists),

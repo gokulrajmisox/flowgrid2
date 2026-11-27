@@ -20,10 +20,12 @@
     base = pathname.substring(0, pathname.indexOf("/about.html") + 1);
   } else if (pathname.includes("/projects.html")) {
     base = pathname.substring(0, pathname.indexOf("/projects.html") + 1);
+  } else if (pathname.includes("/careers.html")) {
+    base = pathname.substring(0, pathname.indexOf("/careers.html") + 1);
   } else if (pathname.includes("/index.html")) {
     base = pathname.substring(0, pathname.indexOf("/index.html") + 1);
-  } else if (/\/(about|projects)\/?$/.test(pathname)) {
-    base = pathname.replace(/\/(about|projects)\/?$/, "/");
+  } else if (/\/(about|projects|careers)\/?$/.test(pathname)) {
+    base = pathname.replace(/\/(about|projects|careers)\/?$/, "/");
   } else {
     base = pathname;
   }
@@ -317,7 +319,11 @@
           var currentPath = window.location.pathname.replace(/\/index\.html$/i, '/').replace(/\/$/, '') || '/';
           closeMenuOverlay();
           if (targetPath === currentPath) {
+            e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+          }
+          if (link.getAttribute('data-link-type') === 'external') {
             return;
           }
           var initialUrl = window.location.href;

@@ -44,6 +44,14 @@ function pageInfo(file) {
       type: 'CollectionPage',
     };
   }
+  if (relative === 'careers.html') {
+    return {
+      url: '/careers',
+      title: 'Flowgrid | Careers & Internship Program',
+      description: 'Build what comes next at Flowgrid. Explore open internship opportunities across web development, UI/UX design, AI/ML, digital marketing, and content creation.',
+      type: 'WebPage',
+    };
+  }
   if (relative.startsWith('projects/')) {
     const source = fs.readFileSync(file, 'utf8');
     const titleMatch = source.match(/<title>([\s\S]*?)<\/title>/i);
@@ -136,7 +144,7 @@ function writeSitemap(pages) {
 }
 
 function main() {
-  const files = [path.join(ROOT, 'index.html'), path.join(ROOT, 'about.html'), path.join(ROOT, 'projects.html'), ...fs.readdirSync(path.join(ROOT, 'projects')).filter((name) => name.endsWith('.html')).sort().map((name) => path.join(ROOT, 'projects', name))];
+  const files = [path.join(ROOT, 'index.html'), path.join(ROOT, 'about.html'), path.join(ROOT, 'projects.html'), path.join(ROOT, 'careers.html'), ...fs.readdirSync(path.join(ROOT, 'projects')).filter((name) => name.endsWith('.html')).sort().map((name) => path.join(ROOT, 'projects', name))];
   const pages = [];
   for (const file of files) {
     const info = pageInfo(file);
